@@ -1,4 +1,6 @@
-﻿using Core.Application.Requests;
+﻿using Application.Features.Brands.Queries.GetById;
+using Application.Features.Categorys.Queries.GetById;
+using Core.Application.Requests;
 using ECommerce.Application.Features.Categories.Commands.Create;
 using ECommerce.Application.Features.Categories.Queries.GetList;
 using ECommerce.Application.Features.Categories.Queries.GetListByPaginate;
@@ -47,5 +49,13 @@ public class CategoriesController : ControllerBase
 
         return Ok(response);
 
+    }
+
+    [HttpGet("getbyid/{id}")]
+    public async Task<IActionResult> GetById([FromRoute] int id)
+    {
+        GetByIdCategoryQuery getByIdCategoryQuery = new() { Id = id };
+        GetByIdCategoryResponse response = await _mediator.Send(getByIdCategoryQuery);
+        return Ok(response);
     }
 }

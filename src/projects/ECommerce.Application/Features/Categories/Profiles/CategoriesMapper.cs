@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Application.Features.Brands.Queries.GetById;
+using AutoMapper;
 using Core.Persistence.Extensions;
 using ECommerce.Application.Features.Categories.Commands.Create;
 using ECommerce.Application.Features.Categories.Queries.GetList;
@@ -14,6 +15,7 @@ public class CategoriesMapper : Profile
     {
         CreateMap<CategoryAddCommand, Category>();
         CreateMap<Category, CategoryAddedResponseDto>();
+        CreateMap<Category, GetByIdCategoryResponse>();
 
         CreateMap<Category,GetListCategoryResponseDto>();
 
